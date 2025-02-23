@@ -1,0 +1,35 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #7996b7;
+}
+#tabla{
+    width: 800px;
+    table-layout: fixed;
+    text-align: center;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.contenido{
+    margin-top: 5rem;
+}
+.titulo{
+    margin-bottom: 2rem;
+}
+h1{
+    text-align: center;
+    color: #fff;
+}
+
+.buscar{
+    width: 20%;
+    margin: auto;
+    margin-top: 2rem;
+    justify-items: center;
+}
+
+#boton{
+    margin-top: 1rem;
+}
