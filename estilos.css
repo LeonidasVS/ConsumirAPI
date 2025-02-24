@@ -3,20 +3,28 @@ body{
     margin: 0;
     padding: 0;
     background-color: #7996b7;
+    color: #fff;
 }
 #tabla{
     width: 800px;
     table-layout: fixed;
     text-align: center;
     margin: auto;
+    margin-top: 1rem;
     overflow: hidden;
     border-radius: 20px;
 }
 .contenido{
     margin-top: 5rem;
 }
+div > .contenedor-botones{
+    display: flex !important;
+    margin: auto;
+    justify-content: center;
+    margin-top: 2rem;
+}
 .titulo{
-    margin-bottom: 2rem;
+    margin-bottom: rem;
 }
 h1{
     text-align: center;
@@ -24,12 +32,57 @@ h1{
 }
 
 .buscar{
-    width: 20%;
-    margin: auto;
-    margin-top: 2rem;
-    justify-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px !important;
+}
+#Productoid{
+    max-width: 200px;
+}
+#Productoid, #botonbuscar{
+    margin: 0 10px;
 }
 
-#boton{
-    margin-top: 1rem;
+
+.botonprimary{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
+.botones-crud{
+    width: 10rem;
+    margin: 0 30px;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.formulario{
+    width: 400px;
+    margin: auto;
+    background-color: #0009;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #0009;
+    margin-top: 10rem;
+    border: 2px solid #fff;
+}
+
+.titulo-form{
+    text-align: center;
+    margin-bottom: 30px;
+}
+@media (max-width:1340px){
+    .botones-crud{
+        width: 5rem;
+    }
+    #tabla{
+        width: 600px;
+    }
+}
+
+
