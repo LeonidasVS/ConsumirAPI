@@ -51,11 +51,6 @@ h1{
     justify-content: center;
     gap: 20px;
 }
-.botones-crud{
-    width: 10rem;
-    margin: 0 30px;
-}
-
 a{
     text-decoration: none;
     color: #fff;

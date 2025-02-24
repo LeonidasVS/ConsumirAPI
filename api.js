@@ -13,7 +13,11 @@ function ObtenerListado() {
     for (let i = 0; i < data.length; i++) {
       body += `<tr><td>${data[i].idProducto}</td><td>${
         data[i].nombre
-      }</td><td>${"$" + data[i].precio}</td><td>${data[i].stock}</td></tr>`;
+      }</td><td>${"$" + data[i].precio}</td><td>${data[i].stock}</td>
+      <td><button type="button" class="btn btn-danger btnEliminar">Eliminar</button></td>
+      <td><a href="#"><button id="update" class="btn btn-primary " type="button">Editar</button></a></td>
+      </tr>
+      `;
     }
 
     document.getElementById("datos").innerHTML = body;
@@ -40,29 +44,6 @@ function buscarProducto() {
   };
 }
 
-//Eliminar Producto
-function eliminarProducto() {
-  let ideliminado = document.getElementById("Productoid").value;
-
-  if (ideliminado.length > 0) {
-    if (confirm("¿Seguro que quiere eliminar este producto?")) {
-      fetch(`${API_URL}/api/Eliminar/${ideliminado}`, {
-        method: "DELETE",
-      }).then((response) => {
-        if (response.ok) {
-          alert("Producto Eliminado");
-          ObtenerListado();
-        } else {
-          alert("El producto es inexistente");
-        }
-      });
-    } else {
-      alert("Ok entiendo!");
-    }
-  } else {
-    alert("Ingresa un ID a eliminar");
-  }
-}
 
 //Insertar Producto
 function insertarProducto() {
@@ -104,6 +85,24 @@ function insertarProducto() {
   }
 }
 
+//Eliminar Producto
+
+function eliminarProducto(id){
+  if (confirm("¿Seguro que quiere eliminar este producto?")) {
+    fetch(`${API_URL}/api/Eliminar/${id}`, {
+      method: "DELETE",
+    }).then((response) => {
+      if (response.ok) {
+        alert("Producto Eliminado");
+        ObtenerListado();
+      } else {
+        alert("El producto es inexistente");
+      }
+    });
+  } else {
+    alert("Ok entiendo!");
+  }
+}
 
 //Validar buscador de ID
 function validarPorID() {
@@ -117,5 +116,19 @@ function validarPorID() {
   });
 }
 
+//Obtener id producto
+document.addEventListener("DOMContentLoaded", function() {
+  let tabla = document.getElementById("tabla");
+
+  tabla.addEventListener("click", function(event) {
+    if (event.target.classList.contains("btnEliminar")) {
+      let botonEliminar = event.target;
+      let fila = botonEliminar.closest("tr");
+      let idProducto = fila.cells[0].textContent;
+
+      eliminarProducto(idProducto);
+    }
+  });
+});
 ObtenerListado();
 validarPorID();
