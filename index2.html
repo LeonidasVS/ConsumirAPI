@@ -21,18 +21,18 @@
         </div>
         <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
-            <input type="decimal" class="form-control" id="precioProducto">
+            <input type="number" class="form-control" id="precioProducto">
         </div>
         <div class="mb-3">
             <label for="stock" class="form-label">Existencias</label>
             <input type="number" class="form-control" id="stockProducto">
         </div>
         <div class="botonprimary">
-            <button onclick="insertarProducto()" class="btn btn-primary" type="button">Registrar</button>
+            <button onclick="insertarProducto()" id="btnInsertar" class="btn btn-primary" type="button">Registrar</button>
+            <button id="btnEditar" class="btn btn-primary" style="display: none;" type="button">Actualizar</button>
             <a href="index.html"><button type="button" class="btn btn-secondary">Regresar</button></a>
         </div>
     </form>
     <script src="api.js"></script>
 </body>
-
 </html>

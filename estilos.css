@@ -6,23 +6,24 @@ body{
     color: #fff;
 }
 #tabla{
-    width: 800px;
+    width: 70%;
     table-layout: fixed;
     text-align: center;
     margin: auto;
     margin-top: 1rem;
     overflow: hidden;
     border-radius: 20px;
+    vertical-align: middle;
 }
 .contenido{
     margin-top: 5rem;
 }
-div > .contenedor-botones{
-    display: flex !important;
-    margin: auto;
+div > .contenedor-insertar{
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 2rem !important;
+    margin: auto;
 }
+
 .titulo{
     margin-bottom: rem;
 }
@@ -33,15 +34,16 @@ h1{
 
 .buscar{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
     margin-top: 50px;
-    margin-bottom: 50px !important;
+    margin-bottom: 30px !important;
+    width: 70%;
+    margin: auto;
 }
 #Productoid{
     max-width: 200px;
 }
-#Productoid, #botonbuscar{
+#botonbuscar{
     margin: 0 10px;
 }
 
