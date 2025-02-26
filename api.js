@@ -1,6 +1,6 @@
 const API_URL = "https://localhost:7198";
-
-var editar=false;
+var editar = false;
+let botonActualizarExiste=document.getElementById("btnActualizar");
 
 //Obtener todos los productos
 function ObtenerListado() {
@@ -47,6 +47,42 @@ function buscarProducto() {
 
     document.getElementById("datos").innerHTML = body;
   };
+}
+
+if(botonActualizarExiste){
+  document.getElementById("btnActualizar").addEventListener('click', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+  
+    const nombrepro = document.getElementById("nombreProducto").value;
+    const preciopro = document.getElementById("precioProducto").value;
+    const stockpro = document.getElementById("stockProducto").value;
+  
+    fetch(`${API_URL}/api/Actualizar`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idProducto: id,
+        nombre: nombrepro,
+        precio: preciopro,
+        stock: stockpro,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Producto actualizado");
+          ObtenerListado();
+          window.location.replace("http://127.0.0.1:5501/index.html#");
+        } else {
+          throw new Error("Error al insertar");
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  });
 }
 
 //Insertar Producto
@@ -132,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.target.classList.contains("btnEliminar")) {
       eliminarProducto(idProducto);
     } else if (event.target.classList.contains("btnEditar")) {
-      editar=true
+      editar = true;
       window.location.href = `http://127.0.0.1:5501/index2.html?id=${idProducto}&editar=${editar}`;
     }
   });
@@ -141,14 +177,11 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const idProducto = urlParams.get("id");
-  const poderEditar=urlParams.get("editar");
+  const poderEditar = urlParams.get("editar");
 
   if (idProducto && poderEditar) {
-    // Este código se ejecuta antes de que el HTML esté listo
-    document.getElementById('btnInsertar').style.display = 'none';
-    // Este código se ejecuta antes de que el HTML esté listo
-    document.getElementById('btnEditar').style.display = 'block';
-
+    document.getElementById("btnInsertar").style.display = "none";
+    document.getElementById("btnActualizar").style.display = "block";
     fetch(`${API_URL}/api/Obtenerporid/${idProducto}`)
       .then((response) => response.json())
       .then((producto) => {
@@ -159,5 +192,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error al buscar el producto:", error));
   }
 });
+
 ObtenerListado();
 validarPorID();
