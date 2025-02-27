@@ -88,7 +88,7 @@ if (botonActualizarExiste) {
             alert(error);
           });
       }else{
-        alert("Espacios en blanco");
+        alert("Hay campos que no cumplen o deben ser rellenados");
       }
     });
 }
@@ -126,7 +126,7 @@ function insertarProducto() {
         alert(error);
       });
   } else {
-    alert("Espacios en blanco");
+    alert("Hay campos que no cumplen o deben ser rellenados");
   }
 }
 
